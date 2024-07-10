@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:profile_app/about.dart';
+import 'package:profile_app/drawer.dart';
 
 void main() {
   runApp(const MyApp());
@@ -9,7 +12,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
@@ -33,6 +36,10 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text("Me"),
+      ),
+      drawer: const MyDrawer(),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
@@ -40,11 +47,11 @@ class _MyHomePageState extends State<MyHomePage> {
           const SizedBox(
             height: 20,
           ),
-          const Padding(
-            padding: EdgeInsets.all(8.0),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
             child: Column(
               children: [
-                Row(
+                const Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
@@ -53,10 +60,10 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 30,
                 ),
-                Row(
+                const Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     Column(
@@ -91,17 +98,26 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                   ],
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 24,
                 ),
-                Divider(),
+                const Divider(),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Text(
+                    const Text(
                       "อาจารย์ประจำสาขาวิทยากาคอมพิวเตอร์",
                       style: TextStyle(fontSize: 16),
                     ),
+                    const SizedBox(
+                      height: 24,
+                    ),
+                    ElevatedButton(
+                      onPressed: () {
+                        Get.to(const AboutPage());
+                      },
+                      child: const Text('About Me'),
+                    )
                   ],
                 )
               ],
