@@ -1,22 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:profile_app/drawer.dart';
 
-class GirdPage extends StatefulWidget {
-  const GirdPage({super.key});
+class GridPage extends StatefulWidget {
+  const GridPage({super.key});
 
   @override
-  State<GirdPage> createState() => _GirdPageState();
+  State<GridPage> createState() => _GridPageState();
 }
 
-class _GirdPageState extends State<GirdPage> {
+class _GridPageState extends State<GridPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Gird View"),
+        title: const Text("Grid View"),
       ),
       drawer: const MyDrawer(),
-      body: Container(),
+      body: GridView.builder(
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+        ),
+        itemBuilder: (context, index) {
+          return Card(
+            child: Center(
+              child: Text('Item $index'),
+            ),
+          );
+        },
+        itemCount: 20,
+      ),
     );
   }
 }

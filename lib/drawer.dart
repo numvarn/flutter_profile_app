@@ -43,7 +43,7 @@ class _MyDrawerState extends State<MyDrawer> {
           ListTile(
             title: const Text('Gird View'),
             onTap: () {
-              Get.to(const GirdPage());
+              Get.to(const GridPage());
             },
           ),
         ],
