@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
+import 'package:profile_app/drawer.dart';
 
 class AboutPage extends StatefulWidget {
   const AboutPage({super.key});
@@ -9,34 +10,27 @@ class AboutPage extends StatefulWidget {
 }
 
 class _AboutPageState extends State<AboutPage> {
+  var items = List<String>.generate(20, (i) => 'Phisan $i');
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("About Me"),
+        title: const Text("My List"),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const Text(
-              "About Me",
-              style: TextStyle(fontSize: 24),
-            ),
-            const SizedBox(
-              height: 24,
-            ),
-            ElevatedButton(
-              onPressed: () {
-                Get.back();
-              },
-              child: const Text(
-                "Back",
-                style: TextStyle(fontSize: 24),
-              ),
-            )
-          ],
+      drawer: const MyDrawer(),
+      body: ListView.builder(
+        itemCount: items.length,
+        prototypeItem: ListTile(
+          title: Text(items.first),
         ),
+        itemBuilder: (context, index) {
+          return ListTile(
+            leading: const Icon(Icons.add),
+            title: Text(items[index]),
+            subtitle: const Text("Computer Science"),
+            trailing: const Icon(Icons.check),
+          );
+        },
       ),
     );
   }
