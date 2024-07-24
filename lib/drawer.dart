@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
 import 'package:profile_app/about.dart';
+import 'package:profile_app/bottom_sheet.dart';
 import 'package:profile_app/grid.dart';
 import 'package:profile_app/main.dart';
 import 'package:profile_app/mix.dart';
@@ -51,6 +52,12 @@ class _MyDrawerState extends State<MyDrawer> {
             title: const Text('Mix View'),
             onTap: () {
               Get.to(const MixLayout());
+            },
+          ),
+          ListTile(
+            title: const Text('Sheet'),
+            onTap: () {
+              Get.to(const MyBottomSheet());
             },
           ),
         ],
